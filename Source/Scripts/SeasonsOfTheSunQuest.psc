@@ -5,7 +5,7 @@ ScriptName SeasonsOfTheSunQuest Extends Quest
 ; PROPERTIES
 ; ---------------------------------------------------------------------------
 
-Float Property BaseLatitude = -53.0 Auto ; N Europe
+Float Property BaseLatitude = -53.0 Auto ; N Europem,Zm, kn, 
 Bool Property UseFasterSeasons = False Auto ; Default: Full year (365 days)
 
 GlobalVariable Property Seasonal_SunHeightAngle Auto
@@ -18,13 +18,12 @@ String CS_OverridePath = "Data/SKSE/Plugins/CommunityShaders/Overrides/SeasonsOf
 ; ---------------------------------------------------------------------------
 
 Event OnInit()
-    RegisterForPeriodicUpdate()
-    EvaluateAngle()
 	;Debug.Trace("SeasonsOfTheSun Quest Initialized.")
 EndEvent
 
 Event OnPlayerLoadGame()
     RegisterForPeriodicUpdate()
+	Utility.Wait(1.5)
     EvaluateAngle()
 EndEvent
 
@@ -38,8 +37,8 @@ EndEvent
 
 Function RegisterForPeriodicUpdate()
     UnregisterForUpdateGameTime()
-    ; Re-evaluates sun angle every 6 game-hours for active testing
-    RegisterForUpdateGameTime(6.0)
+    ; Re-evaluates sun angle every 12 game-hours for active testing
+    RegisterForUpdateGameTime(12.0)
 EndFunction
 
 ; ---------------------------------------------------------------------------
